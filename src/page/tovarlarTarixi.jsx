@@ -13,10 +13,17 @@ function TovarlarPage() {
     if (stored) {
       const parsed = JSON.parse(stored);
       parsed.forEach(card => {
-        const sana = card.sana?.split(/[T\s]/)[0] || new Date().toISOString().split("T")[0];
+        let sana = "";
+        if (card.sana) {
+          sana = card.sana.split(/[T\s]/)[0]; // faqat sanani ol
+        } else {
+          sana = new Date().toISOString().split("T")[0];
+        }
+      
         if (!grouped[sana]) grouped[sana] = [];
         grouped[sana].push(card);
       });
+      
     }
 
     for (let i = 0; i < 90; i++) {

@@ -43,9 +43,10 @@ function Order() {
   };
 
   const saveCard = () => {
+    const sana = new Date().toISOString().split("T")[0]; // faqat YYYY-MM-DD qismi
     const newCard = {
       ...currentBuyer,
-      sana: new Date().toISOString(),
+      sana,
       id: Date.now()
     };
     const updated = [newCard, ...cards];
@@ -54,6 +55,7 @@ function Order() {
     localStorage.removeItem("currentBuyer");
     localStorage.removeItem("tovarForm");
   };
+  
 
   return (
     <div className="p-4 max-w-4xl mx-auto font-sans">
