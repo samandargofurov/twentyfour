@@ -73,12 +73,12 @@ function TovarlarPage() {
       <Link to="/" className="text-blue-600 hover:underline block mb-4">⬅ Orqaga</Link>
       <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center text-gray-800">Tovarlar Tarixi</h2>
 
-      <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
         {Object.keys(cardsByDate).sort((a, b) => b.localeCompare(a)).map((sana) => (
           <button
             key={sana}
             onClick={() => handleDateClick(sana)}
-            className="px-3 py-2 rounded text-sm sm:text-base text-white bg-gray-600 hover:bg-blue-600 transition duration-200"
+            className="px-3 py-2 rounded text-sm text-white bg-gray-600 hover:bg-blue-600 transition duration-200 w-full"
           >
             {sana}
           </button>
