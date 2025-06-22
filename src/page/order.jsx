@@ -101,9 +101,9 @@ function Order() {
   };
 
   return (
-    <div className="p-4 max-w-3xl mx-auto font-sans">
-      <Link to="/tovarlar" className="text-blue-600 hover:underline">Tovarlar Tarixi</Link>
-      <h2 className="text-2xl font-bold mb-4">Yangi Xaridor Uchun Mahsulotlar</h2>
+    <div className="p-4 max-w-4xl mx-auto font-sans">
+      <Link to="/tovarlar" className="text-blue-600 hover:underline block mb-4">Tovarlar Tarixi</Link>
+      <h2 className="text-xl sm:text-2xl font-bold mb-4">Yangi Xaridor Uchun Mahsulotlar</h2>
 
       <div className="mb-4">
         <label className="block mb-1">Ism (ixtiyoriy):</label>
@@ -116,12 +116,12 @@ function Order() {
         />
       </div>
 
-      <form onSubmit={addTovar} className="grid grid-cols-1 md:grid-cols-6 gap-2 mb-4">
+      <form onSubmit={addTovar} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-2 mb-4">
         <select
           name="kategoriya"
           value={tovarForm.kategoriya}
           onChange={handleTovarChange}
-          className="border px-3 py-2 rounded col-span-2"
+          className="border px-3 py-2 rounded"
         >
           <option value="">Kategoriya tanlang</option>
           {kategoriyalar.map((kat) => (
@@ -135,7 +135,7 @@ function Order() {
           value={tovarForm.tovar}
           onChange={handleTovarChange}
           required
-          className={`border px-3 py-2 rounded col-span-1`}
+          className="border px-3 py-2 rounded"
         />
         <input
           type="number"
@@ -144,13 +144,13 @@ function Order() {
           value={tovarForm.miqdor}
           onChange={handleTovarChange}
           required
-          className="border px-3 py-2 rounded col-span-1"
+          className="border px-3 py-2 rounded"
         />
         <select
           name="birlik"
           value={tovarForm.birlik}
           onChange={handleTovarChange}
-          className="border px-3 py-2 rounded col-span-1"
+          className="border px-3 py-2 rounded"
         >
           {birliklar.map((b) => (
             <option key={b} value={b}>{b}</option>
@@ -163,7 +163,7 @@ function Order() {
           value={tovarForm.narx}
           onChange={handleTovarChange}
           required
-          className="border px-3 py-2 rounded col-span-1"
+          className="border px-3 py-2 rounded"
         />
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
           {editIndex !== null ? "Tahrirlash" : "+ Qo‘shish"}
@@ -175,14 +175,14 @@ function Order() {
           <h4 className="font-semibold mb-2">Qo‘shilgan mahsulotlar:</h4>
           <ul className="mb-4 space-y-1">
             {currentBuyer.mahsulotlar.map((m, i) => (
-              <li key={i} className="flex justify-between items-center bg-gray-100 p-2 rounded">
+              <li key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-gray-100 p-2 rounded">
                 <span>
                   <strong>{m.kategoriya ? `${m.kategoriya}: ` : ""}</strong>
                   {m.tovar} - {m.miqdor} {m.birlik}, {m.narx} so‘m,
                   <strong> {(parseFloat(m.narx) * parseFloat(m.miqdor)).toLocaleString()} so‘m</strong>
                 </span>
                 <button
-                  className="text-blue-500 text-sm"
+                  className="text-blue-500 text-sm mt-1 sm:mt-0"
                   onClick={() => handleEdit(i)}
                 >
                   Tahrirlash
@@ -199,7 +199,7 @@ function Order() {
       <hr className="my-6" />
 
       <h3 className="text-xl font-semibold mb-4">Bugungi Tovarlar Ro‘yxati</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {cards.map((card) => (
           <div key={card.id} className="border rounded p-4 bg-white shadow">
             <p><strong>Sana:</strong> {card.sana}</p>
