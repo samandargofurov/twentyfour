@@ -13,7 +13,19 @@ function TovarlarPage() {
     if (stored) {
       const parsed = JSON.parse(stored);
       parsed.forEach(card => {
-        const sana = card.sana?.split(" ")[0] || new Date(card.sana).toISOString().split("T")[0];
+        let sana = "";
+        if (card.sana) {
+          const parts = card.sana.split(" ");
+          if (parts.length > 0 && parts[0].includes(".")) {
+            // Format: dd.mm.yyyy
+            const [dd, mm, yyyy] = parts[0].split(".");
+            sana = `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+          } else {
+            sana = new Date(card.sana).toISOString().split("T")[0];
+          }
+        } else {
+          sana = new Date().toISOString().split("T")[0];
+        }
         if (!grouped[sana]) grouped[sana] = [];
         grouped[sana].push(card);
       });
@@ -34,7 +46,16 @@ function TovarlarPage() {
     if (stored) {
       const parsed = JSON.parse(stored);
       const sanaCards = parsed.filter(card => {
-        const cardDate = card.sana?.split(" ")[0];
+        let cardDate = "";
+        if (card.sana) {
+          const parts = card.sana.split(" ");
+          if (parts.length > 0 && parts[0].includes(".")) {
+            const [dd, mm, yyyy] = parts[0].split(".");
+            cardDate = `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+          } else {
+            cardDate = new Date(card.sana).toISOString().split("T")[0];
+          }
+        }
         return cardDate === sana;
       });
 
