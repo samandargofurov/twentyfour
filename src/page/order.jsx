@@ -31,9 +31,8 @@ function Order() {
   ];
 
   const getFormattedDateTime = () => {
-    const now = new Date();
-    return now.toLocaleString("uz-UZ");
-  };
+    return new Date().toISOString(); // eski: .toLocaleString("uz-UZ")
+  };  
 
   useEffect(() => {
     localStorage.setItem("cards", JSON.stringify(cards));

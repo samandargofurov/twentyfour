@@ -9,8 +9,11 @@ function TovarTarixiDetail() {
     const stored = localStorage.getItem("selectedCards");
     if (stored) {
       setCards(JSON.parse(stored));
+    } else {
+      setCards([]); // fallback
     }
-  }, []);
+  }, [sana]);
+  
 
   const calculateTotal = (mahsulotlar) => {
     return mahsulotlar.reduce(
