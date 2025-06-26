@@ -59,7 +59,10 @@ function Order() {
 
   return (
     <div className="p-4 max-w-4xl mx-auto font-sans">
+      <div className="flex items-center justify-between">
       <Link to="/tovarlar" className="text-blue-600 underline block mb-4">⬅ Tovarlar Tarixi</Link>
+      <Link to="/contactForm" className="text-blue-600 underline block mb-4">⬅ Contact Form</Link>
+      </div>
       <h2 className="text-xl font-bold mb-4">Yangi Xaridor Uchun Mahsulotlar</h2>
 
       <input
