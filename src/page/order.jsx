@@ -55,7 +55,6 @@ function Order() {
     localStorage.removeItem("currentBuyer");
     localStorage.removeItem("tovarForm");
   };
-  
 
   return (
     <div className="p-4 max-w-4xl mx-auto font-sans">
